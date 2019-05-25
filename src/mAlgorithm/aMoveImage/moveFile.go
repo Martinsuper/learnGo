@@ -1,6 +1,7 @@
 package aMoveImage
 
 import (
+	"fmt"
 	"github.com/rwcarlsen/goexif/exif"
 	"github.com/rwcarlsen/goexif/mknote"
 	"log"
@@ -42,13 +43,14 @@ func ReadImage(imageName string) string {
 		log.Fatal(err)
 	}
 	exif.RegisterParsers(mknote.All...)
-	x, err := exif.Decode(f)
-	if err != nil {
-		log.Fatal(err)
+	x, err1 := exif.Decode(f)
+	if err1 != nil {
+		return ""
 	}
-	tm, err := x.DateTime()
-	if err != nil {
-		log.Fatal(err)
+	tm, err2 := x.DateTime()
+	if err2 != nil {
+		fmt.Println(err2)
+		log.Fatal(err2)
 	}
 	return tm.String()
 }

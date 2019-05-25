@@ -13,16 +13,26 @@ import (
 )
 
 func CreateProject(strPath, project string) string {
+	fmt.Println(strPath)
+	fmt.Println(project)
 	if strPath != "" {
 		year := strPath[:4]
 		month := strPath[5:7]
-		path := year + "/" + month
-		path = project + "/" + path
-		err := os.MkdirAll(path, os.ModePerm)
+		myPath := year + "/" + month
+		myPath = project + "/" + myPath
+		err := os.MkdirAll(myPath, os.ModePerm)
 		if err != nil {
 			log.Fatal(err)
 		}
-		return path
+		return myPath
+	}
+	if strPath == "" {
+		myPath := project + "/other"
+		err := os.MkdirAll(myPath, os.ModePerm)
+		if err != nil {
+			log.Fatal(err)
+		}
+		return myPath
 	}
 	return ""
 }
@@ -86,7 +96,7 @@ func GetImagePath(path string) []string {
 	}
 	defer file.Close()
 	buff := bufio.NewReader(file)
-	slice := make([]string, 100000)
+	slice := make([]string, 1000000)
 	cnt := 0
 	for {
 		data, _, eof := buff.ReadLine()
