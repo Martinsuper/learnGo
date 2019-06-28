@@ -4,13 +4,17 @@ import (
 	"fmt"
 	"mAlgorithm/aSort"
 	"mAlgorithm/getData"
+	"path/filepath"
 	"time"
 )
 
 func main() {
-	ans := getData.ReadFile("/Users/duanyu/workspace/learnGo/src/mAlgorithm/data/sortData1")
+	datapath, _ := filepath.Abs(filepath.Dir("./"))
+	datapath += "/src/mAlgorithm/data/sortData1"
+	ans := getData.ReadFile(datapath)
 	bubbleTime(&ans)
 	insertionTime(&ans)
+
 }
 
 func bubbleTime(ans *[]int) {
