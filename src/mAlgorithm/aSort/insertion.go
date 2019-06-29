@@ -9,12 +9,10 @@ func Sinsert(ans []int) {
 			if ans[j+1] < ans[j] {
 				ans[j+1], ans[j] = ans[j], ans[j+1]
 			} else {
+				//ExportArray(&ans)
 				break
 			}
 		}
 	}
 	fmt.Printf("直接插入排序：%d个随机数\n", ansLen)
-	//for i := 0; i < ansLen; i++ {
-	//	fmt.Printf("%d\n", ans[i])
-	//}
 }

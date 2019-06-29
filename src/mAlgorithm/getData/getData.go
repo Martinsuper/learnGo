@@ -6,6 +6,7 @@ import (
 	"io"
 	"mAlgorithm/aGenerateRand"
 	"os"
+	"path/filepath"
 	"strconv"
 	"strings"
 )
@@ -20,7 +21,7 @@ func ReadFile(path string) []int {
 		fmt.Println("read error:", err)
 	}
 	buff := bufio.NewReader(fd)
-	slice := make([]int, 100000)
+	slice := make([]int, 1000000)
 	cnt := 0
 	for {
 		data, _, eof := buff.ReadLine()
@@ -41,12 +42,14 @@ func ReadFile(path string) []int {
 }
 
 func SetData() {
-	file, error := os.Create("/Users/duanyu/workspace/learnGo/src/mAlgorithm/data/sortData1")
+	datapath, _ := filepath.Abs(filepath.Dir("./"))
+	datapath += "/src/mAlgorithm/data/sortData2"
+	file, error := os.Create(datapath)
 	if error != nil {
 		fmt.Println(error)
 	}
-	for i := 0; i < 1000; i++ {
-		for j := 0; j < 20; j++ {
+	for i := 0; i < 10000; i++ {
+		for j := 0; j < 10; j++ {
 			data := aGenerateRand.GenerateRand()
 			data1 := strconv.Itoa(data) + " "
 			_, _ = file.WriteString(data1)

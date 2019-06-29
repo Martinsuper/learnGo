@@ -10,16 +10,20 @@ import (
 
 func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
-	datapath += "/src/mAlgorithm/data/sortData1"
+	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
-	bubbleTime(&ans)
-	insertionTime(&ans)
+	//bubbleTime(&ans)
+	//insertionTime(&ans)
+	aSort.Selection(ans)
+	aSort.ExportArray(&ans)
+	aSort.IsSorted(&ans)
+	//getData.SetData()
 
 }
 
 func bubbleTime(ans *[]int) {
 	start := time.Now()
-	aSort.Sbubble(*ans)
+	aSort.Sbubble1(*ans)
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
