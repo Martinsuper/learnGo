@@ -2,7 +2,6 @@ package aSort
 
 import (
 	"fmt"
-	"time"
 )
 
 func IsSorted(ans *[]int) {
@@ -15,10 +14,10 @@ func IsSorted(ans *[]int) {
 	fmt.Println("有序")
 }
 
-func ExportArray(array *[]int) {
-	for i := 0; i < len(*array); i++ {
-		fmt.Printf("%d ", (*array)[i])
+func ExportArray(array []int) {
+	for i := 0; i < len(array); i++ {
+		fmt.Printf("%d ", array[i])
 	}
-	time.Sleep(1000000000)
+	//time.Sleep(1000000000)
 	fmt.Println()
 }

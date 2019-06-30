@@ -12,10 +12,12 @@ func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
 	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
+	aSort.HeapSort(ans)
+	//shellTime(ans)
 	//bubbleTime(&ans)
 	//insertionTime(&ans)
-	aSort.Selection(ans)
-	aSort.ExportArray(&ans)
+	//selectionTime(ans)
+	//aSort.ExportArray(&ans)
 	aSort.IsSorted(&ans)
 	//getData.SetData()
 
@@ -32,6 +34,22 @@ func bubbleTime(ans *[]int) {
 func insertionTime(ans *[]int) {
 	start := time.Now()
 	aSort.Sinsert(*ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
+}
+
+func selectionTime(ans []int) {
+	start := time.Now()
+	aSort.Selection(ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
+}
+
+func shellTime(ans []int) {
+	start := time.Now()
+	aSort.Shellsort(ans)
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
