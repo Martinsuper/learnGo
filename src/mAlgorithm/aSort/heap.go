@@ -1,7 +1,8 @@
 package aSort
 
+import "fmt"
+
 func HeapSort(ans []int) {
-	ExportArray(ans)
 	ansLen := len(ans)
 	for i := ansLen/2 - 1; i >= 0; i-- {
 		adjustHeap(ans, i, ansLen)
@@ -10,7 +11,7 @@ func HeapSort(ans []int) {
 		ans[0], ans[j] = ans[j], ans[0]
 		adjustHeap(ans, 0, j)
 	}
-	//fmt.Printf("希尔排序：%d个随机数\n", ansLen)
+	fmt.Printf("希尔排序：%d个随机数\n", ansLen)
 }
 
 func adjustHeap(ans []int, i, length int) {
@@ -21,6 +22,7 @@ func adjustHeap(ans []int, i, length int) {
 		}
 		if ans[k] > ans[pos] {
 			ans[k], ans[pos] = ans[pos], ans[k]
+			pos = k
 		} else {
 			break
 		}

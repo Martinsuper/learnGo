@@ -12,28 +12,28 @@ func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
 	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
-	aSort.HeapSort(ans)
+	quickTime(ans)
+	//heapTime(ans)
 	//shellTime(ans)
 	//bubbleTime(&ans)
 	//insertionTime(&ans)
 	//selectionTime(ans)
-	//aSort.ExportArray(&ans)
+	//aSort.ExportArray(ans)
 	aSort.IsSorted(&ans)
 	//getData.SetData()
-
 }
 
-func bubbleTime(ans *[]int) {
+func bubbleTime(ans []int) {
 	start := time.Now()
-	aSort.Sbubble1(*ans)
+	aSort.Sbubble1(ans)
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
 }
 
-func insertionTime(ans *[]int) {
+func insertionTime(ans []int) {
 	start := time.Now()
-	aSort.Sinsert(*ans)
+	aSort.Sinsert(ans)
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
@@ -50,6 +50,22 @@ func selectionTime(ans []int) {
 func shellTime(ans []int) {
 	start := time.Now()
 	aSort.Shellsort(ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
+}
+
+func heapTime(ans []int) {
+	start := time.Now()
+	aSort.HeapSort(ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
+}
+
+func quickTime(ans []int) {
+	start := time.Now()
+	aSort.QuickSort(ans, 0, len(ans)-1)
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
