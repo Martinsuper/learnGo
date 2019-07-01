@@ -12,16 +12,7 @@ func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
 	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
-	tmp := mergeTime(ans)
-	//quickTime(ans)
-	//heapTime(ans)
-	//shellTime(ans)
-	//bubbleTime(&ans)
-	//insertionTime(&ans)
-	//selectionTime(ans)
-	//aSort.ExportArray(ans)
-	aSort.IsSorted(tmp)
-	//getData.SetData()
+	aSort.RadixSort(ans)
 }
 
 func bubbleTime(ans []int) {
