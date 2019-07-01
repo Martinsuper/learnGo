@@ -12,14 +12,15 @@ func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
 	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
-	quickTime(ans)
+	tmp := mergeTime(ans)
+	//quickTime(ans)
 	//heapTime(ans)
 	//shellTime(ans)
 	//bubbleTime(&ans)
 	//insertionTime(&ans)
 	//selectionTime(ans)
 	//aSort.ExportArray(ans)
-	aSort.IsSorted(&ans)
+	aSort.IsSorted(tmp)
 	//getData.SetData()
 }
 
@@ -69,4 +70,13 @@ func quickTime(ans []int) {
 	end := time.Since(start)
 	fmt.Printf("用时：")
 	fmt.Println(end)
+}
+
+func mergeTime(ans []int) []int {
+	start := time.Now()
+	tmp := aSort.MergeSort(ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
+	return tmp
 }

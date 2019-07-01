@@ -4,9 +4,9 @@ import (
 	"fmt"
 )
 
-func IsSorted(ans *[]int) {
-	for i := 0; i < len(*ans)-1; i++ {
-		if (*ans)[i] > (*ans)[i+1] {
+func IsSorted(ans []int) {
+	for i := 0; i < len(ans)-1; i++ {
+		if ans[i] > ans[i+1] {
 			fmt.Println("无序")
 			return
 		}
