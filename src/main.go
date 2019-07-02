@@ -12,7 +12,10 @@ func main() {
 	datapath, _ := filepath.Abs(filepath.Dir("./"))
 	datapath += "/src/mAlgorithm/data/sortData2"
 	ans := getData.ReadFile(datapath)
-	aSort.RadixSort(ans)
+	radixTime(ans)
+	//selectionTime(ans)
+	aSort.ExportArray(ans)
+	aSort.IsSorted(ans)
 }
 
 func bubbleTime(ans []int) {
@@ -70,4 +73,12 @@ func mergeTime(ans []int) []int {
 	fmt.Printf("用时：")
 	fmt.Println(end)
 	return tmp
+}
+
+func radixTime(ans []int) {
+	start := time.Now()
+	aSort.RadixSort(ans)
+	end := time.Since(start)
+	fmt.Printf("用时：")
+	fmt.Println(end)
 }

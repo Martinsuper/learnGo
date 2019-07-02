@@ -1,34 +1,17 @@
 package aSort
 
 import (
-	"fmt"
 	"strconv"
 )
 
 func RadixSort(ans []int) {
-	//var darray [10][100]int
-	darray := make([][]int, 10000000)
 	length := getMaxNumLen(ans)
 	mod := 10
-	dev := 1
-	for i := 0; i < length; {
-		for j := 0; j < len(ans); j++ {
-			bucketValue := ans[j]%mod/dev + mod
-			darray[bucketValue] = append(darray[bucketValue], ans[j])
-			fmt.Println(bucketValue, ans[j])
-		}
-		cnt := 0
-		for k := 0; k < 10; k++ {
-			for l := 0; l < len(darray[k]); l++ {
-				ans[cnt] = darray[k][l]
-				cnt++
-			}
-		}
-		//break
+	for i := 1; i <= length; i++ {
+		tmp := setBucket(ans, mod)
 		mod *= 10
-		dev *= 10
+		getArray(tmp, ans)
 	}
-	ExportArray(darray[0])
 }
 
 func getMaxNumLen(ans []int) int {
@@ -42,7 +25,22 @@ func getMaxNumLen(ans []int) int {
 	return len(maxStr)
 }
 
-func test() {
-	length := len(strconv.Itoa(100))
-	fmt.Println(length)
+func setBucket(ans []int, num int) [][]int {
+	tmp := make([][]int, 10000000)
+	for j := 0; j < len(ans); j++ {
+		bucketValue := ans[j] % num / (num / 10)
+		tmp[bucketValue] = append(tmp[bucketValue], ans[j])
+	}
+	return tmp
+}
+
+func getArray(tmp [][]int, ans []int) {
+	cnt := 0
+	for i := 0; i < 10; i++ {
+		for j := 0; j < len(tmp[i]); j++ {
+			ans[cnt] = tmp[i][j]
+			cnt++
+		}
+	}
+	//ExportArray(ans)
 }
